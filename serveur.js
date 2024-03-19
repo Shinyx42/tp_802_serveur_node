@@ -60,6 +60,7 @@ app.post('/action', function(req, res){
 		});
 	});
 	console.log(dep, arr);
+	res.sendFile(path.join(__dirname, 'data', 'html', 'index.html'));
 	//res.redirect(301, "/");;
 });
 
