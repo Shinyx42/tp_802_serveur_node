@@ -7,6 +7,9 @@ app.use(express.static(__dirname + '/data'));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
+require('dotenv').config();
+
+const port = process.env.PORT;
 
 getCity= async function (nom) {
 		let url = "https://api-adresse.data.gouv.fr/search/?q=";
@@ -96,6 +99,6 @@ io.on('connection', (socket) => {
 
 	
 
-http.listen(3000, function(){
-	console.log('listening on *:3000');
+http.listen(port, function(){
+	console.log('listening on *:${port}');
 });
