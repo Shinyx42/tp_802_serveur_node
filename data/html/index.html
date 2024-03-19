@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Map</title>
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+ <link rel="stylesheet" href="css/map.css" />
+ <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+
+</head>
+
+<body>
+<div class="flex-container">
+<form action="/action" method="POST">
+  <label for="depart">Ville de départ:</label><br>
+  <input type="text" id="depart" name="depart" value="Le Bourget du Lac"><br>
+  <label for="arriver">Ville d'arriver:</label><br>
+  <input type="text" id="arriver" name="arriver" value="Grenoble"><br><br>
+  <label for="car">Voiture</label><br/>
+  <select id="car" name="car">
+    <option value="australia">voitures</option>
+  </select>
+  <input type="submit" value="Submit">
+</form> 
+<div id="map" height="1800px"></div>
+</div>
+<script>
+var map = L.map('map').setView([45.641834, 5.8588], 13);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+	maxZoom: 19,
+	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+</script>
+<script 
+</body>
+</html> 
