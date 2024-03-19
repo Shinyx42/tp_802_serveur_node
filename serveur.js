@@ -2,7 +2,6 @@ const express = require('express');
 const app  = express();
 const http = require('http').Server(app);
 const path = require('path');
-//var io = require('socket.io')(http);
 app.use(express.static(__dirname + '/data'));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -52,16 +51,17 @@ app.post('/action', function(req, res){
 	console.log(req.body.car);
 	var dep = getCity(req.body.depart);
 	var arr = getCity(req.body.arriver);
+	var nextborne;
 	dep.then(function(result){console.log(result);});
 	arr.then(function(result){console.log(result);});
 	dep.then(function(depart){
 		arr.then(function(arriver){
 			console.log(depart, arriver);
-			var nextborne = getNextBorn(depart,arriver,30);
+			nextborne = getNextBorn(depart,arriver,30);
 		});
 	});
 	console.log(dep, arr);
-	res.send(nextborne);
+	nextborne.then(res.send(nextborne));
 	//res.redirect(301, "/");;
 });
 
