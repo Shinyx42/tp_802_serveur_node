@@ -57,48 +57,15 @@ app.post('/action', function(req, res){
 	dep.then(function(depart){
 		arr.then(function(arriver){
 			console.log(depart, arriver);
-			getNextBorn(depart,arriver,30);
+			var nextborne = getNextBorn(depart,arriver,30);
 		});
 	});
 	console.log(dep, arr);
-	res.redirect(301, "/");;
+	res.send(nextborne);
+	//res.redirect(301, "/");;
 });
 
 //https://api-adresse.data.gouv.fr/search/?q=
-
-/*app.get('/text', function(req, res){
-	res.sendFile(path.join(__dirname, 'html', 'text.html'));
-});
-
-io.on('connection', (socket) => {
-  console.log('a user connected');
-  socket.on('disconnect', () => {
-    console.log('user disconnected');
-  });
-  socket.on('inc', (socket) => {
-	  console.log('inc');
-	  compteur++;
-	  io.emit('compt', compteur);
-  });
-  socket.on('dec', (socket) => {
-	  console.log('dec');
-	  compteur--;
-	  io.emit('compt', compteur);
-  });
-  socket.on('raz', (socket) => {
-	  console.log('raz');
-	  compteur=0;
-	  io.emit('compt', compteur);
-  });
-  socket.on('chat message', (msg) => {
-	console.log(msg);
-    io.emit('chat message', msg);
-  });
-});*/
-
-
-	
-
 http.listen(port, function(){
 	console.log('listening on *:${port}');
 });
