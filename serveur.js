@@ -51,17 +51,15 @@ app.post('/action', function(req, res){
 	console.log(req.body.car);
 	var dep = getCity(req.body.depart);
 	var arr = getCity(req.body.arriver);
-	var nextborne;
 	dep.then(function(result){console.log(result);});
 	arr.then(function(result){console.log(result);});
 	dep.then(function(depart){
 		arr.then(function(arriver){
 			console.log(depart, arriver);
-			nextborne = getNextBorn(depart,arriver,30);
+			console.log(getNextBorn(depart,arriver,30));
 		});
 	});
 	console.log(dep, arr);
-	nextborne.then(function(borne){res.send(borne);});
 	//res.redirect(301, "/");;
 });
 
