@@ -61,7 +61,7 @@ app.post('/action', function(req, res){
 		});
 	});
 	console.log(dep, arr);
-	nextborne.then(res.send(nextborne));
+	nextborne.then(function(borne){res.send(borne);});
 	//res.redirect(301, "/");;
 });
 
